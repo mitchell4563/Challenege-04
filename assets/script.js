@@ -43,14 +43,14 @@ function mainQuiz () {
 
 function chooseAnswer () {
    currentQuestion++
+   if (currentQuestion > 5) {
+    endQuiz()
+    return
+    }
    goToQuestion()
 }
 
 function goToQuestion() {
-    if (currentQuestion > 5) {
-        endQuiz()
-        return
-        }
     question.innerHTML = questions[currentQuestion].question
     answerOne.innerHTML = questions[currentQuestion].answers[0]
     answerTwo.innerHTML = questions[currentQuestion].answers[1]
