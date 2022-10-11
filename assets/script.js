@@ -5,7 +5,7 @@ var scorePage = document.getElementsByClassName("score-page")[0];
 var startButton = document.getElementById("startButton");
 var displayScore = document.getElementById("score");
 var timerDisplay = document.getElementById("timerDisplay");
-var highScoresList = document.getElementById("highScoresList");
+var highScoresList = document.getElementById("highscoreul");
 var question = document.getElementById("question");
 var answerOne = document.getElementById("answer-1");
 var answerTwo = document.getElementById("answer-2");
@@ -53,23 +53,25 @@ function mainQuiz() {
     timerDisplay.innerHTML = timerCountdown;
     if (timerCountdown < 1) {
       clearInterval(interval);
+    } if (timerCountdown === 0) {
+        endQuiz
+    }
+    if (currentQuestion > 4) {
+      clearInterval(interval);
     }
   }, 1000);
-  setTimeout(endQuiz, 10000);
   goToQuestion();
 }
 
 function chooseAnswer() {
   var selectedAnswer = event.target.value;
   var answerValue = parseInt(selectedAnswer);
-  console.log(questions[currentQuestion].correctAnswer)
-  console.log(answerValue)
 
-  if ((answerValue === questions[currentQuestion].correctAnswer)) {
+  if (answerValue === questions[currentQuestion].correctAnswer) {
     increaseScore();
-    console.log("hello")
+    console.log("hello");
   } else {
-    timerCountdown -= 1
+    timerCountdown -= 1;
   }
 
   currentQuestion++;
@@ -77,6 +79,9 @@ function chooseAnswer() {
     endQuiz();
     return;
   }
+
+  if (currentQuestion > 4) clearTimeout(timeout);
+
   goToQuestion();
 }
 
@@ -98,10 +103,23 @@ function endQuiz() {
   $("#submit-button").click(function () {
     endPage.style.display = "none";
     scorePage.style.display = "block";
+    var userInfo = {
+      initials: document.getElementById("initials-input").value,
+      score: score,
+    };
+    localStorage.setItem("userInitials", userInfo.initials);
+    localStorage.setItem("userScore", userInfo.score)
+    highScoresList.appendChild(createListItem(JSON.stringify(localStorage.getItem("userInitials")) + " - " + (localStorage.getItem("userScore"))));
   });
 }
 
 function increaseScore() {
   score++;
   displayScore.innerHTML = score;
+}
+
+function createListItem(Highscore) {
+  var li = document.createElement("li");
+  li.textContent = Highscore;
+  return li;
 }

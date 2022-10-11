@@ -13,7 +13,7 @@
       <!--top div-->
       <div class="top-bar">
         <p>Timer: <span id="timerDisplay"></span></p>
-        <p>Score: <span id="score">0</span></p>
+        <p>Score: <span name="score" id="score">0</span></p>
       </div>
 
       <!--inner div-->
@@ -38,13 +38,15 @@
         <div class="end-page">
           <h1>Congrats! You have finished the quiz.</h1>
           <p>Please enter your initials here to record your score:</p>
-          <input id="initials-input" />
+          <input type="text" name="initials" id="initials-input" />
           <button id="submit-button">Submit</button>
         </div>
         <!--High Scores Page-->
         <div class="score-page">
           <h1>Scores:</h1>
-          <ul id="highScoresList"></ul>
+          <div class = scoreList>
+          <ul id="highscoreul"></ul>
+          </div>
         </div>
       </div>
     </div>

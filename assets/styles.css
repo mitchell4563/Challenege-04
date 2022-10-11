@@ -7,7 +7,7 @@
   color: white;
 
   /*Debugging*/
-  /* border: 1px solid red;*/
+   border: 1px solid red;
 }
 
 body {
@@ -114,4 +114,10 @@ h2 {
 
 .score-page {
   display: none;
+}
+
+.scoreList {
+    position: relative;
+    left: 50%;
+    font-size: 1.3em;
 }
