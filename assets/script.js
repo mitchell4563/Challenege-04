@@ -69,7 +69,6 @@ function chooseAnswer() {
 
   if (answerValue === questions[currentQuestion].correctAnswer) {
     increaseScore();
-    console.log("hello");
   } else {
     timerCountdown -= 1;
   }
@@ -101,7 +100,7 @@ function endQuiz() {
   $("#submit-button").click(function () {
     endPage.style.display = "none";
     scorePage.style.display = "block";
-    var userInfo = {
+    var userInfo = { 
       initials: document.getElementById("initials-input").value,
       score: score,
     };
