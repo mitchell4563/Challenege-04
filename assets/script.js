@@ -55,7 +55,7 @@ function mainQuiz() {
       clearInterval(interval);
     } 
     if (timerCountdown === 0) {
-      endQuiz
+      endQuiz()
   }
     if (currentQuestion > 4) {
       clearInterval(interval);
@@ -105,12 +105,9 @@ function endQuiz() {
       initials: document.getElementById("initials-input").value,
       score: score,
     }];
-    localStorage.setItem("userInitials", userInfo.initials);
-    localStorage.setItem("userScore", userInfo.score);
-    var initials = localStorage.getItem("userInitials")
-    var userScore = localStorage.getItem("userScore")
-
-    highScoresList.appendChild(createListItem(initials + " - " + userScore));
+    localStorage.setItem("userInitials", (userInfo.initials));
+    localStorage.setItem("userScore", (userInfo.score));
+    highScoresList.appendChild(createListItem(JSON.stringify(localStorage.getItem("userInitials")) + " - " + (JSON.stringify(localStorage.getItem("userScore")))));
   })
 }
 
