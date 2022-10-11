@@ -12,32 +12,32 @@ var answerTwo = document.getElementById("answer-2");
 var answerThree = document.getElementById("answer-3");
 var answerFour = document.getElementById("answer-4");
 var currentQuestion = 0;
-var timerCountdown = 15;
+var timerCountdown = 10;
 var score = 0;
 var questions = [
   {
-    question: "what color is the sky?",
-    answers: ["red", "blue", "purple", "green"],
+    question: "Which is a commonly used data type?",
+    answers: ["bad data", "numbers", "good data", "meh data"],
     correctAnswer: 1,
   },
   {
-    question: "what color is the ground?",
-    answers: ["blue", "red", "purple", "green"],
+    question: "How would I call a function titled mainQuiz?",
+    answers: ["mainquizcall", "callmainquiz", "Mainquiz", "mainQuiz()"],
     correctAnswer: 3,
   },
   {
-    question: "what color is the ocean?",
-    answers: ["red", "blue", "purple", "green"],
+    question: "How do i set a variable in javascript>",
+    answers: ["Constable = ", "var = ", "letter = ", "variant = "],
     correctAnswer: 1,
   },
   {
-    question: "what color is my truck?",
-    answers: ["red", "silver", "orange", "blue"],
+    question: "What is the extension for Javascript files?",
+    answers: [".java", ".js", ".javaext", ".javajuice"],
     correctAnswer: 1,
   },
   {
-    question: "what color is the street?",
-    answers: ["blue", "orange", "black", "yellow"],
+    question: "Are javascript and java the same thing?",
+    answers: ["yes", "kind of", "no", "of course!"],
     correctAnswer: 2,
   },
 ];
@@ -105,9 +105,9 @@ function endQuiz() {
       initials: document.getElementById("initials-input").value,
       score: score,
     }];
-    localStorage.setItem("userInitials", (userInfo.initials));
-    localStorage.setItem("userScore", (userInfo.score));
-    highScoresList.appendChild(createListItem(JSON.stringify(localStorage.getItem("userInitials")) + " - " + (JSON.stringify(localStorage.getItem("userScore")))));
+    localStorage.setItem("userInitials", (userInfo[0].initials));
+    localStorage.setItem("userScore", (userInfo[0].score));
+    highScoresList.appendChild(createListItem(localStorage.getItem("userInitials") + " - " + (localStorage.getItem("userScore"))));
   })
 }
 
