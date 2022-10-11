@@ -80,8 +80,6 @@ function chooseAnswer() {
     return;
   }
 
-  if (currentQuestion > 4) clearTimeout(timeout);
-
   goToQuestion();
 }
 
