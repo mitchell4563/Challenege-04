@@ -1,20 +1,22 @@
 var quizIntro = document.getElementsByClassName("quiz-intro")[0];
 var quizContent = document.getElementsByClassName("quiz-content")[0];
 var endPage = document.getElementsByClassName("end-page")[0];
+var scorePage = document.getElementsByClassName("score-page")[0];
 var startButton = document.getElementById("startButton");
+var displayScore = document.getElementById("score")
+var timer = document.getElementById("timer")
+var highScoresList =document.getElementById("highScoresList")
 var question = document.getElementById("question");
 var answerOne = document.getElementById("answer-1");
 var answerTwo = document.getElementById("answer-2");
 var answerThree = document.getElementById("answer-3");
 var answerFour = document.getElementById("answer-4");
 var currentQuestion = 0;
-
-startButton.addEventListener("click", mainQuiz);
-
+var score = 0
 var questions = [{
     question: "what color is the sky?",
-    answers: ["blue", "red", "purple", "green"],
-    correctAnswer: 0    
+    answers: ["red", "blue", "purple", "green"],
+    correctAnswer: 1    
 }
 ,{
     question: "what color is the ground?",
@@ -37,13 +39,23 @@ var questions = [{
     correctAnswer: 2
 }]
 
+startButton.addEventListener("click", mainQuiz);
+
 function mainQuiz () {
     quizIntro.style.display = "none"
     quizContent.style.display = "block"
+    setTimeout(endQuiz, 10000)
     goToQuestion()
 }
 
 function chooseAnswer () {
+    var selectedAnswer = event.target.value;
+    var answerValue = parseInt(selectedAnswer)
+
+    if (answerValue = questions[currentQuestion].correctAnswer) {
+        increaseScore()
+    }
+
    currentQuestion++
    if (currentQuestion > 4) {
     endQuiz()
@@ -66,10 +78,14 @@ function goToQuestion() {
 function endQuiz() {
     quizContent.style.display = "none";
     endPage.style.display = "block";
+
     $("#submit-button").click(function () {
-        var initialsInput = document.getElementById("initials-input")
-        localStorage.setItem("initials", input.val());
-        var initials = localStorage.getItem("initials") 
-        console.log(initials) 
+        endPage.style.display = "none";
+        scorePage.style.display = "block";
     })
+}
+
+function increaseScore () {
+    score++
+    displayScore.innerHTML = score 
 }
