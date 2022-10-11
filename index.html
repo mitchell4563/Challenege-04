@@ -1,55 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Challenge 04</title>
-    <link rel="stylesheet" href = "assets/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
     <!--main container-->
     <div class="main-container">
-        <!--top div-->
-        <div class ="top-bar">
-            <p id="timer">Timer: <span id="timerDisplay"></span></p> <p>Score: <span id="score">0</span></p>
+      <!--top div-->
+      <div class="top-bar">
+        <p>Timer: <span id="timerDisplay"></span></p>
+        <p>Score: <span id="score">0</span></p>
+      </div>
+
+      <!--inner div-->
+      <div class="inner-div">
+        <!--Quiz Intro-->
+        <header class="quiz-intro">
+          <h1>Welcome to my quiz!</h1>
+          <p>Quiz rules to be input later</p>
+          <button id="startButton">Start Quiz!</button>
+        </header>
+
+        <!--Quiz content-->
+        <main class="quiz-content">
+          <h1 id="question"></h1>
+          <button id="answer-1" value="0"></button>
+          <button id="answer-2" value="1"></button>
+          <button id="answer-3" value="2"></button>
+          <button id="answer-4" value="3"></button>
+        </main>
+
+        <!--End page-->
+        <div class="end-page">
+          <h1>Congrats! You have finished the quiz.</h1>
+          <p>Please enter your initials here to record your score:</p>
+          <input id="initials-input" />
+          <button id="submit-button">Submit</button>
         </div>
-
-        <!--inner div-->
-        <div class="inner-div">
-
-            <!--Quiz Intro-->
-            <header class="quiz-intro">
-                <h1>Welcome to my quiz!</h1>
-                <p>Quiz rules to be input later</p>
-                <button id ="startButton">Start Quiz!</button>
-            </header>
-
-            <!--Quiz content-->
-            <main class="quiz-content">
-                <h1 id="question"></h1>
-                <button id="answer-1" value="0"></button>
-                <button id="answer-2" value="1"></button>
-                <button id="answer-3" value="2"></button>
-                <button id="answer-4" value="3"></button>
-            </main>
-            
-            <!--End page-->
-            <div class="end-page">
-                <h1>Congrats! You have finished the quiz.</h1>
-                <p>Please enter your initials here to record your score:</p><input id="initials-input">
-                <button id="submit-button">Submit</button>
-            </div>
-            <!--High Scores Page-->
-            <div class="score-page">
-                <h1>Scores:</h1>
-                <ul id="highScoresList"></ul>
-            </div>
-
+        <!--High Scores Page-->
+        <div class="score-page">
+          <h1>Scores:</h1>
+          <ul id="highScoresList"></ul>
         </div>
-
+      </div>
     </div>
     <script src="./assets/script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-</body>
+  </body>
 </html>
