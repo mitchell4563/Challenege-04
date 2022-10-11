@@ -12,8 +12,8 @@
     <div class="main-container">
         <!--top div-->
         <div class ="top-bar">
-            <button>View Highscores</button>
-            <p>Timer: 00:00</p>
+            <button id="scores-button">View Highscores</button>
+            <p id="timer">Timer: 00:00</p> <p id="score">Score: 0</p>
         </div>
 
         <!--inner div-->
@@ -28,15 +28,24 @@
 
             <!--Quiz content-->
             <main class="quiz-content">
-
                 <h1 id="question"></h1>
                 <button id="answer-1" value="0"></button>
                 <button id="answer-2" value="1"></button>
                 <button id="answer-3" value="2"></button>
                 <button id="answer-4" value="3"></button>
-                
-
             </main>
+            
+            <!--End page-->
+            <div class="end-page">
+                <h1>Congrats! You have finished the quiz.</h1>
+                <p>Please enter your initials here to record your score:</p><input id="initials-input">
+                <button id="submit-button">Submit</button>
+            </div>
+
+            <div class="score-page">
+                <h1>Scores:</h1>
+                <ul></ul>
+            </div>
 
         </div>
 

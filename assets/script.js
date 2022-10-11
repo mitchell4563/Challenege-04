@@ -1,5 +1,6 @@
 var quizIntro = document.getElementsByClassName("quiz-intro")[0];
 var quizContent = document.getElementsByClassName("quiz-content")[0];
+var endPage = document.getElementsByClassName("end-page")[0];
 var startButton = document.getElementById("startButton");
 var question = document.getElementById("question");
 var answerOne = document.getElementById("answer-1");
@@ -7,6 +8,7 @@ var answerTwo = document.getElementById("answer-2");
 var answerThree = document.getElementById("answer-3");
 var answerFour = document.getElementById("answer-4");
 var currentQuestion = 0;
+
 startButton.addEventListener("click", mainQuiz);
 
 var questions = [{
@@ -43,7 +45,7 @@ function mainQuiz () {
 
 function chooseAnswer () {
    currentQuestion++
-   if (currentQuestion > 5) {
+   if (currentQuestion > 4) {
     endQuiz()
     return
     }
@@ -51,16 +53,23 @@ function chooseAnswer () {
 }
 
 function goToQuestion() {
-    question.innerHTML = questions[currentQuestion].question
-    answerOne.innerHTML = questions[currentQuestion].answers[0]
-    answerTwo.innerHTML = questions[currentQuestion].answers[1]
-    answerThree.innerHTML = questions[currentQuestion].answers[2]
-    answerFour.innerHTML = questions[currentQuestion].answers[3]
+    question.innerHTML = questions[currentQuestion].question;
+    answerOne.innerHTML = questions[currentQuestion].answers[0];
+    answerTwo.innerHTML = questions[currentQuestion].answers[1];
+    answerThree.innerHTML = questions[currentQuestion].answers[2];
+    answerFour.innerHTML = questions[currentQuestion].answers[3];
     answerOne.addEventListener("click", chooseAnswer);
     answerTwo.addEventListener("click", chooseAnswer);
     answerThree.addEventListener("click", chooseAnswer);
     answerFour.addEventListener("click", chooseAnswer);
 }
 function endQuiz() {
-    console.log("is is working")
+    quizContent.style.display = "none";
+    endPage.style.display = "block";
+    $("#submit-button").click(function () {
+        var initialsInput = document.getElementById("initials-input")
+        localStorage.setItem("initials", input.val());
+        var initials = localStorage.getItem("initials") 
+        console.log(initials) 
+    })
 }

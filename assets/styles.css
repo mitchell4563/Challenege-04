@@ -7,7 +7,7 @@
     color: white;
 
     /*Debugging*/
-    /*border: 1px solid red;*/
+   /* border: 1px solid red;*/
 }
 
 body {
@@ -44,6 +44,7 @@ h1, h2 {
 /*Top Bar Section*/
 .top-bar p {
     float: right;
+    padding-right: 5vh;
 }
 
 
@@ -93,7 +94,28 @@ h1, h2 {
 .quiz-content button {
     background-color: rgb(58, 29, 184);
     color:aliceblue;
-    margin-right: 5%;
+}
+
+/*End page section*/
+
+.end-page {
+    display: none;
+    margin: auto;
+    text-align: center;
+    line-height: 6vh;
+}
+
+.end-page input {
+    color: black;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/*Score page section*/
+
+.score-page {
+    display: none;
 }
 
 
