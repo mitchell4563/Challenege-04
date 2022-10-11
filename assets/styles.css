@@ -13,6 +13,7 @@
 body {
   background-color: darkblue;
   overflow: hidden;
+  text-align: center;
 }
 
 p {
@@ -92,6 +93,8 @@ h2 {
 .quiz-content button {
   background-color: rgb(58, 29, 184);
   color: aliceblue;
+  padding-left: 5vh;
+  padding-right: 5vh;
 }
 
 /*End page section*/

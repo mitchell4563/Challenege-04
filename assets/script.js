@@ -53,9 +53,10 @@ function mainQuiz() {
     timerDisplay.innerHTML = timerCountdown;
     if (timerCountdown < 1) {
       clearInterval(interval);
-    } if (timerCountdown === 0) {
-        endQuiz
-    }
+    } 
+    if (timerCountdown === 0) {
+      endQuiz
+  }
     if (currentQuestion > 4) {
       clearInterval(interval);
     }
@@ -100,14 +101,17 @@ function endQuiz() {
   $("#submit-button").click(function () {
     endPage.style.display = "none";
     scorePage.style.display = "block";
-    var userInfo = { 
+    var userInfo = [{ 
       initials: document.getElementById("initials-input").value,
       score: score,
-    };
+    }];
     localStorage.setItem("userInitials", userInfo.initials);
-    localStorage.setItem("userScore", userInfo.score)
-    highScoresList.appendChild(createListItem(JSON.stringify(localStorage.getItem("userInitials")) + " - " + (localStorage.getItem("userScore"))));
-  });
+    localStorage.setItem("userScore", userInfo.score);
+    var initials = localStorage.getItem("userInitials")
+    var userScore = localStorage.getItem("userScore")
+
+    highScoresList.appendChild(createListItem(initials + " - " + userScore));
+  })
 }
 
 function increaseScore() {
