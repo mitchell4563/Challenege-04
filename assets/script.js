@@ -13,7 +13,7 @@ var answerTwo = document.getElementById("answer-2");
 var answerThree = document.getElementById("answer-3");
 var answerFour = document.getElementById("answer-4");
 var currentQuestion = 0;
-var timerCountdown = 10;
+var timerCountdown = 15;
 var score = 0;
 
 //Object containing all the questions and the correct answer index
