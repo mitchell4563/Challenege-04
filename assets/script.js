@@ -1,3 +1,4 @@
+//Sets all initial variables needed
 var quizIntro = document.getElementsByClassName("quiz-intro")[0];
 var quizContent = document.getElementsByClassName("quiz-content")[0];
 var endPage = document.getElementsByClassName("end-page")[0];
@@ -14,6 +15,8 @@ var answerFour = document.getElementById("answer-4");
 var currentQuestion = 0;
 var timerCountdown = 10;
 var score = 0;
+
+//Object containing all the questions and the correct answer index
 var questions = [
   {
     question: "Which is a commonly used data type?",
@@ -41,9 +44,9 @@ var questions = [
     correctAnswer: 2,
   },
 ];
-
+//Event listener on start button to run the start quiz function
 startButton.addEventListener("click", mainQuiz);
-
+//Function to hide the intro div, start the timer, and begin the question chain
 function mainQuiz() {
   quizIntro.style.display = "none";
   quizContent.style.display = "block";
@@ -53,10 +56,10 @@ function mainQuiz() {
     timerDisplay.innerHTML = timerCountdown;
     if (timerCountdown < 1) {
       clearInterval(interval);
-    } 
+    }
     if (timerCountdown === 0) {
-      endQuiz()
-  }
+      endQuiz();
+    }
     if (currentQuestion > 4) {
       clearInterval(interval);
     }
@@ -64,6 +67,7 @@ function mainQuiz() {
   goToQuestion();
 }
 
+//Function that is called whenever an answer is clicked. compares index of the selected answer to index of correct answer and responds accordingly
 function chooseAnswer() {
   var selectedAnswer = event.target.value;
   var answerValue = parseInt(selectedAnswer);
@@ -83,6 +87,7 @@ function chooseAnswer() {
   goToQuestion();
 }
 
+//Function to cycle through the questions object and display each of the five questions
 function goToQuestion() {
   question.innerHTML = questions[currentQuestion].question;
   answerOne.innerHTML = questions[currentQuestion].answers[0];
@@ -94,28 +99,40 @@ function goToQuestion() {
   answerThree.addEventListener("click", chooseAnswer);
   answerFour.addEventListener("click", chooseAnswer);
 }
+
+//Function that triggers whenever either all five questions have been answered or the timer reaches 0
 function endQuiz() {
   quizContent.style.display = "none";
   endPage.style.display = "block";
-
+  //Click event to submit the initials and store both the initials and score into local storage and then display them on the score page
   $("#submit-button").click(function () {
     endPage.style.display = "none";
     scorePage.style.display = "block";
-    var userInfo = [{ 
-      initials: document.getElementById("initials-input").value,
-      score: score,
-    }];
-    localStorage.setItem("userInitials", (userInfo[0].initials));
-    localStorage.setItem("userScore", (userInfo[0].score));
-    highScoresList.appendChild(createListItem(localStorage.getItem("userInitials") + " - " + (localStorage.getItem("userScore"))));
-  })
+    var userInfo = [
+      {
+        initials: document.getElementById("initials-input").value,
+        score: score,
+      },
+    ];
+    localStorage.setItem("userInitials", userInfo[0].initials);
+    localStorage.setItem("userScore", userInfo[0].score);
+    highScoresList.appendChild(
+      createListItem(
+        localStorage.getItem("userInitials") +
+          " - " +
+          localStorage.getItem("userScore")
+      )
+    );
+  });
 }
 
+//Called when an answer is matched with the right index
 function increaseScore() {
   score++;
   displayScore.innerHTML = score;
 }
 
+//Creates a list item to append the ul
 function createListItem(Highscore) {
   var li = document.createElement("li");
   li.textContent = Highscore;
